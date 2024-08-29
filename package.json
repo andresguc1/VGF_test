@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -15,7 +16,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:cypress_ui": "npx cypress open",
+    "test:cypress_ci": "npx cypress run",
+    "test:playwright_ui": "npx playwright test  playwright/ --ui",
+    "test:playwright_ci": "npx playwright test  playwright/"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "cypress": "^13.14.0"
   }
 }

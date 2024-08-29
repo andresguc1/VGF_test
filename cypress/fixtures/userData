@@ -1,0 +1,14 @@
+module.exports = [
+  {
+    email: "test1@vgfmanagement.com",
+    password: "password1"
+  },
+  {
+    email: "test2@vgfmanagement.com",
+    password: "password2"
+  },
+  {
+    email: "test3@vgfmanagement.com",
+    password: "password3"
+  }
+];
