@@ -1,35 +1,33 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { UserProvider } from './UserContext';
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-test('renders Proyecto Web Básico text', () => {
-  render(
-    <UserProvider>
-      <Router>
+// Mock the child components
+jest.mock('./components/LoginForm', () => () => <div>Login Form</div>);
+jest.mock('./components/RegisterForm', () => () => <div>Register Form</div>);
+jest.mock('./components/UserPanel', () => () => <div>User Panel</div>);
+
+describe('Test Tittle ', () => {
+  test('renders app title', () => {
+    render(<App />);
+    const titleElement = screen.getByText(/Proyecto Web Básico/i);
+    expect(titleElement).toBeInTheDocument();
+  });
+
+  test('renders LoginForm by default', () => {
+    render(<App />);
+    expect(screen.getByText('Login Form')).toBeInTheDocument();
+  });
+
+  test('navigates to RegisterForm', () => {
+    render(
+      <BrowserRouter>
         <App />
-      </Router>
-    </UserProvider>
-  );
-  const textElement = screen.getByText(/Proyecto Web Básico/i);
-  expect(textElement).toBeInTheDocument();
-});
-
-test('renders login form on /login route', async () => {
-  render(
-    <UserProvider>
-      <Router>
-        <App />
-      </Router>
-    </UserProvider>
-  );
-
-  // Simulate navigation to /login
-  window.history.pushState({}, 'Login Page', '/login');
-
-  // Wait for the LoginForm component to appear
-  await waitFor(() => {
-    const loginElement = screen.getByText(/Login Form/i); // Adjust this text to match something in LoginForm
-    expect(loginElement).toBeInTheDocument();
+      </BrowserRouter>
+    );
+    const registerLink = screen.getByText('Regístrate');
+    fireEvent.click(registerLink);
+    expect(screen.getByText('Register Form')).toBeInTheDocument();
   });
 });
