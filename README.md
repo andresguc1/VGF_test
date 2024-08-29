@@ -31,3 +31,6 @@ The following scripts are used for running Cypress and Playwright tests:
    ```bash
    git clone <repository-url>
    cd <repository-directory>
+
+2. **Evidence test**
+   folder Gif_evidence

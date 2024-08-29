@@ -4,11 +4,7 @@ module.exports = [
     password: "password1"
   },
   {
-    email: "test2@vgfmanagement.com",
-    password: "password2"
-  },
-  {
-    email: "test3@vgfmanagement.com",
-    password: "password3"
+    email: "test4@noexist.com",
+    password: "noexist"
   }
 ];
